@@ -12,14 +12,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
     }
 
     public void test()
     {
-        int i = 1;
-        int y = 0;
-        int result = i + y;
+        String str = "Hello git!0";
+        String str2 = "yep";
     }
 }
