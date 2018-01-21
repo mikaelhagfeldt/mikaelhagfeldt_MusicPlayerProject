@@ -15,4 +15,11 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+    public void test()
+    {
+        int i = 1;
+        int y = 0;
+        int result = i + y;
+    }
 }
