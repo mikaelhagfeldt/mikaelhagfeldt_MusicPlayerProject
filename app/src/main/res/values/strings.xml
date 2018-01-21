@@ -2,4 +2,6 @@
     <string name="app_name">mikaelhagfeldt_MusicPlayerProject</string>
     <string name="title">Example Title</string>
     <string name="artist">Example Artist</string>
+    <string name="example_start">0:00</string>
+    <string name="example_end">3:00</string>
 </resources>
