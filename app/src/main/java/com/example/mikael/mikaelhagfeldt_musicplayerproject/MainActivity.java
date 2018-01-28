@@ -45,14 +45,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void playSong()
     {
-
+        if (this.fieldMediaPlayer != null)
+        {
+            this.fieldMediaPlayer.start();
+            this.fieldButtonPlay.setBackgroundResource(R.drawable.ic_media_); // ?????
+        }
     }
 
     public void pauseSong()
     {
         if (this.fieldMediaPlayer != null)
         {
-
+            this.fieldMediaPlayer.pause();
+            this.fieldButtonPlay.setBackgroundResource(R.drawable.ic_media_play); // ?????
         }
     }
 
