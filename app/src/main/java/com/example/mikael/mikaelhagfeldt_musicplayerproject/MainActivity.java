@@ -3,12 +3,13 @@ package com.example.mikael.mikaelhagfeldt_musicplayerproject;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
     private MediaPlayer fieldMediaPlayer;
     private ImageView fieldImageView;
@@ -32,12 +33,41 @@ public class MainActivity extends AppCompatActivity
         this.fieldTextViewLeft = findViewById(R.id.id_ma1_tw_start);
         this.fieldTextViewRight = findViewById(R.id.id_ma1_tw_end);
         this.fieldSeekBar = findViewById(R.id.id_ma1_seekBar);
+        this.fieldButtonNext.setOnClickListener(this);
+        this.fieldButtonPlay.setOnClickListener(this);
+        this.fieldButtonPrev.setOnClickListener(this);
+        this.fieldMediaPlayer = new MediaPlayer();
+        this.fieldMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.goingHome);
 
 
 
+    }
 
+    public void playSong()
+    {
 
+    }
 
+    public void pauseSong()
+    {
+        if (this.fieldMediaPlayer != null)
+        {
+
+        }
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
+            case R.id.id_ma1_previousButton:
+                break;
+            case R.id.id_ma1_playButton:
+                break;
+            case R.id.id_ma1_nextButton:
+                break;
+        }
     }
 
 
