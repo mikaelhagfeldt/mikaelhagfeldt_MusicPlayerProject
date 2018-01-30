@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.fieldButtonPlay.setOnClickListener(this);
         this.fieldButtonPrev.setOnClickListener(this);
         this.fieldMediaPlayer = new MediaPlayer();
-        this.fieldMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.goingHome);
+        this.fieldMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.goinghome);
 
 
 
@@ -69,6 +69,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.id_ma1_previousButton:
                 break;
             case R.id.id_ma1_playButton:
+                if (fieldMediaPlayer.isPlaying())
+                {
+                    pauseSong();
+                }
+                else
+                {
+                    playSong();
+                }
                 break;
             case R.id.id_ma1_nextButton:
                 break;
