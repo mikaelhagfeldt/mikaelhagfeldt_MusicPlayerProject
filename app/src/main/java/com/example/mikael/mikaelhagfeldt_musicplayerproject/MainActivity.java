@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (this.fieldMediaPlayer != null)
         {
             this.fieldMediaPlayer.start();
-            this.fieldButtonPlay.setBackgroundResource(R.drawable.ic_media_); // ?????
+            this.fieldButtonPlay.setBackgroundResource(android.R.drawable.ic_media_pause);
         }
     }
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (this.fieldMediaPlayer != null)
         {
             this.fieldMediaPlayer.pause();
-            this.fieldButtonPlay.setBackgroundResource(R.drawable.ic_media_play); // ?????
+            this.fieldButtonPlay.setBackgroundResource(android.R.drawable.ic_media_play);
         }
     }
 
