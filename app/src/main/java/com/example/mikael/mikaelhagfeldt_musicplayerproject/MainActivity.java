@@ -3,6 +3,7 @@ package com.example.mikael.mikaelhagfeldt_musicplayerproject;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView fieldTextViewLeft;
     private TextView fieldTextViewRight;
     private SeekBar fieldSeekBar;
+    private Thread fieldThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -71,9 +73,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+    }
 
+    /*
+        Skapar processor som körs samtidigt som applikationen kör, och som uppdaterar texten
+        nedanför SeekBar i realtid. Koden nedanför körs medan låten spelas, dvs medan
+        SeekBar rör sig framåt. Thread sleep på minst 40, annars hänger sig applikationen.
+     */
 
-
+    public void updater()
+    {
+        this.fieldThread = new Thread()
+        {
+            @Override
+            public void run()
+            {
+                try
+                {
+                    while ((fieldMediaPlayer.isPlaying()) && (fieldMediaPlayer != null))
+                    {
+                        Thread.sleep(40);
+                        runOnUiThread(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                int localCurrentPositionNew = fieldMediaPlayer.getCurrentPosition();
+                                fieldSeekBar.setProgress(localCurrentPositionNew);
+                                fieldTextViewLeft.setText(String.valueOf(new SimpleDateFormat("mm:ss").format(new Date(fieldMediaPlayer.getCurrentPosition()))));
+                            }
+                        });
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.d("Error.", "Something wrong with Thread.");
+                }
+            }
+        };
+        this.fieldThread.start();
     }
 
     public void playSong()
@@ -81,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (this.fieldMediaPlayer != null)
         {
             this.fieldMediaPlayer.start();
+            updater();
             this.fieldButtonPlay.setBackgroundResource(android.R.drawable.ic_media_pause);
         }
     }
