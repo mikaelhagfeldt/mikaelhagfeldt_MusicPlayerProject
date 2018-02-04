@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
     private MediaPlayer fieldMediaPlayer;
@@ -49,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     fieldMediaPlayer.seekTo(i);
                 }
+                SimpleDateFormat localDateFormat = new SimpleDateFormat("mm:ss");
+                int localCurrentPosition = fieldMediaPlayer.getCurrentPosition();
+                int localCurrentDuration = fieldMediaPlayer.getDuration();
+                fieldTextViewLeft.setText(localDateFormat.format(new Date(localCurrentPosition)));
+                fieldTextViewRight.setText(localDateFormat.format(new Date(localCurrentDuration)));
             }
 
             @Override
