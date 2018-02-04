@@ -38,13 +38,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.fieldButtonPrev.setOnClickListener(this);
         this.fieldMediaPlayer = new MediaPlayer();
         this.fieldMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.goinghome);
+        this.fieldSeekBar.setMax(this.fieldMediaPlayer.getDuration());
 
         this.fieldSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b)
             {
-
+                if (b)
+                {
+                    fieldMediaPlayer.seekTo(i);
+                }
             }
 
             @Override
