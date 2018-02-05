@@ -162,7 +162,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void previousSong()
     {
-
+        if (this.fieldMediaPlayer.isPlaying())
+        {
+            this.fieldMediaPlayer.seekTo(0-1); // fungerar inte, seekTo() fel metod?
+        }
     }
 
 
