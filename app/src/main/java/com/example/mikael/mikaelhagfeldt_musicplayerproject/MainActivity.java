@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId())
         {
             case R.id.id_ma1_previousButton:
+                previousSong();
                 break;
             case R.id.id_ma1_playButton:
                 if (fieldMediaPlayer.isPlaying())
@@ -151,13 +152,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.id_ma1_nextButton:
+                nextSong();
                 break;
         }
     }
 
     public void nextSong()
     {
-
+        if (this.fieldMediaPlayer != null)
+        {
+            this.fieldMediaPlayer.seekTo(this.fieldMediaPlayer.getDuration() - 500); // hoppar till slutet av aktuell låt
+        }
     }
 
     public void previousSong()
